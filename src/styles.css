@@ -1,0 +1,80 @@
+:root {
+  --background: #080a09;
+  --surface: #0c0f0e;
+  --text: #f1f4f2;
+  --muted-bright: #a8b0ab;
+  --muted: #727b75;
+  --line: rgba(255, 255, 255, 0.085);
+  --line-strong: rgba(255, 255, 255, 0.15);
+  --accent: #69e69e;
+  --mono: "SFMono-Regular", "SF Mono", "Roboto Mono", Consolas, monospace;
+  --mouse-x: 50vw;
+  --mouse-y: 30vh;
+  --scroll-progress: 0%;
+  color-scheme: dark;
+  font-family: Inter, "SF Pro Display", "Segoe UI", Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(105, 230, 158, 0.23);
+  color: var(--text);
+}
+
+.section-shell {
+  width: min(1500px, calc(100% - clamp(44px, 8vw, 144px)));
+  margin: 0 auto;
+}
+
+@media (max-width: 680px) {
+  .section-shell {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
