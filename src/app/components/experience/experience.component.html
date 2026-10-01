@@ -1,0 +1,58 @@
+<section class="experience section-shell" id="experience">
+  <div class="section-heading">
+    <span class="section-number">02</span>
+    <div>
+      <p class="kicker">{{ language.current() === 'de' ? 'Erfahrung' : 'Experience' }}</p>
+      <h2>
+        {{ language.current() === 'de' ? 'Vier Jahre praktische' : 'Four years of practical' }}<br>
+        <em>{{ language.current() === 'de' ? 'Softwareentwicklung.' : 'software development.' }}</em>
+      </h2>
+    </div>
+  </div>
+
+  <div class="experience-grid">
+    <div class="timeline">
+      <article>
+        <span class="date">08.2022 — 07.2026</span>
+        <div>
+          <h3>Sigren Engineering AG</h3>
+          <p class="role">{{ language.current() === 'de' ? 'Informatiker EFZ · Applikationsentwicklung' : 'Application Developer EFZ' }}</p>
+          <p>
+            {{ language.current() === 'de'
+              ? 'Praktische Softwareentwicklung während der vierjährigen EFZ-Ausbildung mit C#/.NET, Webtechnologien, Datenbanken, Schnittstellen, Git und automatisierten Tests.'
+              : 'Hands-on software development during a four-year EFZ apprenticeship using C#/.NET, web technologies, databases, interfaces, Git and automated testing.' }}
+          </p>
+          <div class="tags"><span>C# / .NET</span><span>Blazor</span><span>REST</span><span>SQL</span><span>Git</span><span>Testing</span></div>
+        </div>
+      </article>
+
+      <article>
+        <span class="date">2026</span>
+        <div>
+          <h3>{{ language.current() === 'de' ? 'EFZ Abschluss' : 'EFZ Graduation' }}</h3>
+          <p class="role">{{ language.current() === 'de' ? 'Informatiker Applikationsentwicklung' : 'Application Developer' }}</p>
+          <p>
+            {{ language.current() === 'de'
+              ? 'Abschlussarbeit mit Note 5.2 / 6.0. Selbstständige Planung, Umsetzung, Tests, Dokumentation und Präsentation.'
+              : 'Final project graded 5.2 / 6.0, including independent planning, implementation, testing, documentation and presentation.' }}
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <aside class="process-card">
+      <p class="mono-label">MY DEFAULT MODE</p>
+      <blockquote>
+        {{ language.current() === 'de'
+          ? '„Erst verstehen, was das Problem wirklich ist. Dann die einfachste Lösung bauen, die langfristig sauber bleibt.“'
+          : '“First understand the actual problem. Then build the simplest solution that stays clean long term.”' }}
+      </blockquote>
+      <div class="process">
+        <div><span>01</span><p>{{ language.current() === 'de' ? 'Anforderungen verstehen' : 'Understand requirements' }}</p></div>
+        <div><span>02</span><p>{{ language.current() === 'de' ? 'Architektur & Datenfluss' : 'Architecture & data flow' }}</p></div>
+        <div><span>03</span><p>{{ language.current() === 'de' ? 'Umsetzen & integrieren' : 'Build & integrate' }}</p></div>
+        <div><span>04</span><p>{{ language.current() === 'de' ? 'Testen & verbessern' : 'Test & improve' }}</p></div>
+      </div>
+    </aside>
+  </div>
+</section>

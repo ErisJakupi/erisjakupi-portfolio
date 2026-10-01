@@ -1,3 +1,114 @@
-:host {
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-content: center;
+  gap: 22px;
+  padding: 30px;
+  background: #080a09;
+  animation: intro-out 420ms ease 760ms forwards;
+}
+
+.intro-loader strong {
+  font-size: clamp(48px, 9vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  font-weight: 700;
+}
+
+.loader-line {
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.loader-line span {
   display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  animation: loader-progress 720ms cubic-bezier(.65, 0, .35, 1) both;
+}
+
+.loader-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.scroll-progress {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+}
+
+.scroll-progress span {
+  display: block;
+  width: var(--scroll-progress);
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(105, 230, 158, 0.6);
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient i {
+  position: absolute;
+  width: 36vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.05;
+  background: var(--accent);
+  animation: ambient-drift 18s ease-in-out infinite alternate;
+}
+
+.ambient i:first-child {
+  left: -18vw;
+  top: 28%;
+}
+
+.ambient i:last-child {
+  right: -18vw;
+  top: 68%;
+  animation-delay: -8s;
+}
+
+@keyframes loader-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes intro-out {
+  to { opacity: 0; visibility: hidden; transform: translateY(-12px); }
+}
+
+@keyframes ambient-drift {
+  from { transform: translate3d(-6%, -3%, 0) scale(0.9); }
+  to { transform: translate3d(8%, 6%, 0) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader {
+    display: none;
+  }
+
+  .ambient i {
+    animation: none;
+  }
 }

@@ -1,0 +1,29 @@
+<section class="skills-section">
+  <div class="section-shell">
+    <div class="section-heading">
+      <span class="section-number">03</span>
+      <div>
+        <p class="kicker">{{ language.current() === 'de' ? 'Werkzeugkasten' : 'Toolkit' }}</p>
+        <h2>Backend-first.<br><em>{{ language.current() === 'de' ? 'Full-stack fähig.' : 'Full-stack capable.' }}</em></h2>
+      </div>
+      <p class="heading-note">
+        {{ language.current() === 'de'
+          ? 'Mein stärkstes Fundament ist .NET. Dazu kommen moderne Web-Technologien, Datenbanken, DevOps-Grundlagen und Schnittstellen in die industrielle Welt.'
+          : '.NET is my strongest foundation. Around it: modern web technologies, databases, DevOps fundamentals and interfaces into industrial systems.' }}
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <article><span>01</span><h3>Core</h3><p>C# · .NET 8 · ASP.NET Core · Blazor · EF Core · LINQ · OOP · DI</p></article>
+      <article><span>02</span><h3>Data & APIs</h3><p>PostgreSQL · SQL · REST APIs · JSON · Offline Sync · Excel Processing</p></article>
+      <article><span>03</span><h3>Web & UI</h3><p>Angular · TypeScript · Blazor Server · MudBlazor · React · HTML · CSS</p></article>
+      <article><span>04</span><h3>Engineering</h3><p>OPC UA · BACnet · Modbus · PLC Systems · LDAP / Active Directory</p></article>
+      <article><span>05</span><h3>Delivery</h3><p>Docker · Git · GitHub Actions · Unit Tests · Integration Tests · CI/CD</p></article>
+      <article class="learning">
+        <span>06</span>
+        <h3>{{ language.current() === 'de' ? 'Was ich gerade vertiefe' : 'What I am deepening now' }}</h3>
+        <p>{{ language.current() === 'de' ? 'Angular, Clean Architecture, automatisierte Tests und zuverlässige Deployment-Workflows.' : 'Angular, Clean Architecture, automated testing and reliable deployment workflows.' }}</p>
+      </article>
+    </div>
+  </div>
+</section>

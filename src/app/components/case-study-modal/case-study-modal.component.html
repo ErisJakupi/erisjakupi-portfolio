@@ -1,0 +1,57 @@
+@if (project !== null) {
+  <div class="modal-backdrop" role="presentation" (click)="close()">
+    <article class="modal-panel" role="dialog" aria-modal="true" [attr.aria-label]="project.title" (click)="$event.stopPropagation()">
+      <button class="close-button" type="button" aria-label="Case Study schliessen" (click)="close()">×</button>
+
+      <header class="case-header">
+        <span>{{ project.number }} / {{ language.pick(project.category) }} · {{ project.year }}</span>
+        <h2>{{ project.title }}</h2>
+        <p>{{ language.pick(project.intro) }}</p>
+      </header>
+
+      <div class="case-facts">
+        @for (fact of project.facts; track fact.value) {
+          <div>
+            <small>{{ language.pick(fact.label) }}</small>
+            <strong>{{ fact.value }}</strong>
+          </div>
+        }
+      </div>
+
+      <div class="case-body">
+        <section>
+          <span>01</span>
+          <div>
+            <h3>{{ language.current() === 'de' ? 'Ausgangslage' : 'Challenge' }}</h3>
+            <p>{{ language.pick(project.problem) }}</p>
+          </div>
+        </section>
+
+        <section>
+          <span>02</span>
+          <div>
+            <h3>{{ language.current() === 'de' ? 'Was ich umgesetzt habe' : 'What I built' }}</h3>
+            <ul>
+              @for (item of project.solution; track item.de) {
+                <li>{{ language.pick(item) }}</li>
+              }
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <span>03</span>
+          <div>
+            <h3>{{ language.current() === 'de' ? 'Hinweis' : 'Note' }}</h3>
+            <p>{{ language.pick(project.note) }}</p>
+            @if (project.link !== null) {
+              <a [href]="project.link" target="_blank" rel="noreferrer">
+                {{ language.current() === 'de' ? 'Repository ansehen' : 'View repository' }} <span>↗</span>
+              </a>
+            }
+          </div>
+        </section>
+      </div>
+    </article>
+  </div>
+}

@@ -1,6 +1,23 @@
+@if (introVisible()) {
+  <div class="intro-loader" aria-hidden="true">
+    <strong>ERIS JAKUPI</strong>
+    <div class="loader-line"><span></span></div>
+    <div class="loader-meta"><span>SOFTWARE DEVELOPER</span><span>ZÜRICH · 2026</span></div>
+  </div>
+}
+
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<div class="ambient" aria-hidden="true"><i></i><i></i></div>
+
 <app-site-header></app-site-header>
 
 <main>
   <app-hero></app-hero>
-  <app-projects></app-projects>
+  <app-projects (projectSelected)="openProject($event)"></app-projects>
+  <app-experience></app-experience>
+  <app-skills></app-skills>
+  <app-about></app-about>
+  <app-contact></app-contact>
 </main>
+
+<app-case-study-modal [project]="selectedProject()" (closed)="closeProject()"></app-case-study-modal>
