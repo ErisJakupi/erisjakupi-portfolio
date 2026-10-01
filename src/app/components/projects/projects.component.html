@@ -1,0 +1,115 @@
+<section class="projects-section" id="work">
+  <div class="section-shell projects-heading">
+    <div class="heading-main">
+      <span class="section-number">01</span>
+      <div>
+        <p class="kicker">{{ language.current() === 'de' ? 'Ausgewählte Arbeiten' : 'Selected work' }}</p>
+        <h2>
+          {{ language.current() === 'de' ? 'Projekte, die ich' : 'Projects I' }}<br>
+          <em>{{ language.current() === 'de' ? 'wirklich gebaut habe.' : 'actually built.' }}</em>
+        </h2>
+      </div>
+    </div>
+
+    <div class="heading-side">
+      <p>
+        {{ language.current() === 'de'
+          ? 'Vier Projekte aus unterschiedlichen Bereichen — von verteilten Systemen über Testing bis zu produktionsnahen Business Applications.'
+          : 'Four projects across different areas — from distributed systems and testing to production-oriented business applications.' }}
+      </p>
+      <div class="rail-controls">
+        <button type="button" aria-label="Vorheriges Projekt" (click)="scrollProjects('previous')">←</button>
+        <button type="button" aria-label="Nächstes Projekt" (click)="scrollProjects('next')">→</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rail-wrap">
+    <div class="project-rail" #projectRail>
+      @for (project of projects; track project.id) {
+        <article
+          class="project-card"
+          tabindex="0"
+          (pointermove)="updateCardGlow($event)"
+          (click)="openProject(project)"
+          (keydown.enter)="openProject(project)"
+        >
+          <div class="project-glow"></div>
+
+          <div class="project-copy">
+            <div class="project-meta">
+              <span>{{ project.number }} / {{ language.pick(project.category) }}</span>
+              <span>{{ project.year }}</span>
+            </div>
+
+            <div class="project-title-group">
+              <h3>{{ project.title }}</h3>
+              <p>{{ language.pick(project.summary) }}</p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tags">
+                @for (tag of project.tags; track tag) {
+                  <span>{{ tag }}</span>
+                }
+              </div>
+
+              <button type="button" class="case-button" (click)="$event.stopPropagation(); openProject(project)">
+                {{ language.current() === 'de' ? 'Case Study' : 'Case study' }}
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="project-visual">
+            @switch (project.visual) {
+              @case ('services') {
+                <div class="services-visual">
+                  <div class="visual-toolbar"><span>SERVICE TOPOLOGY</span><span>6 NODES</span></div>
+                  <div class="service-map">
+                    <span class="connector c1"></span>
+                    <span class="connector c2"></span>
+                    <span class="connector c3"></span>
+                    <span class="connector c4"></span>
+                    <div class="service-node gateway">API<br>GATEWAY</div>
+                    <div class="service-node product">PRODUCT</div>
+                    <div class="service-node cart">CART</div>
+                    <div class="service-node user">USER</div>
+                    <div class="service-node fitness">FITNESS</div>
+                    <div class="service-node kafka">KAFKA</div>
+                  </div>
+                  <div class="visual-status"><span><i></i> discovery</span><span><i></i> events</span><span><i></i> resilient</span></div>
+                </div>
+              }
+              @case ('chess') {
+                <div class="chess-visual">
+                  <div class="visual-toolbar"><span>TDD SESSION</span><span>10 × 10</span></div>
+                  <div class="chess-board">
+                    @for (square of chessSquares; track square) {
+                      <span
+                        [class.dark]="isDarkSquare(square)"
+                        [class.piece]="isChessPiece(square)"
+                        [class.alternate]="isAlternatePiece(square)"
+                      ></span>
+                    }
+                  </div>
+                  <div class="test-status"><span><i></i> UNIT</span><span><i></i> INTEGRATION</span><span><i></i> COVERAGE</span><strong>PASS</strong></div>
+                </div>
+              }
+            }
+          </div>
+        </article>
+      }
+
+      <div class="rail-end" aria-hidden="true">
+        <span>02 / 02</span>
+        <p>{{ language.current() === 'de' ? 'Mehr entsteht gerade.' : 'More is being built.' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-shell swipe-hint">
+    <span>{{ language.current() === 'de' ? 'Horizontal scrollen' : 'Scroll horizontally' }}</span>
+    <i></i>
+  </div>
+</section>
