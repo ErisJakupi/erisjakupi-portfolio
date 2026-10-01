@@ -1,0 +1,52 @@
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="Eris Jakupi Startseite" (click)="closeMenu()">
+    <span class="brand-mark">EJ</span>
+    <span class="brand-name">Eris Jakupi</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Hauptnavigation">
+    <a href="#work">{{ language.current() === 'de' ? 'Projekte' : 'Projects' }}</a>
+    <a href="#experience">{{ language.current() === 'de' ? 'Erfahrung' : 'Experience' }}</a>
+    <a href="#about">{{ language.current() === 'de' ? 'Über mich' : 'About' }}</a>
+    <a href="#contact">{{ language.current() === 'de' ? 'Kontakt' : 'Contact' }}</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="language-button" type="button" (click)="language.toggle()">
+      {{ language.current() === 'de' ? 'EN' : 'DE' }}
+    </button>
+
+    <a class="github-link" href="https://github.com/ErisJakupi" target="_blank" rel="noreferrer" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.17c-3.14.68-3.8-1.33-3.8-1.33-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.74.4-1.24.72-1.52-2.51-.29-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.44.11-3 0 0 .96-.31 3.08 1.16A10.7 10.7 0 0 1 12 5.98c.96 0 1.92.13 2.82.38 2.13-1.47 3.08-1.16 3.08-1.16.62 1.56.23 2.71.11 3 .73.8 1.17 1.8 1.17 3.04 0 4.36-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1v3.15c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z"></path>
+      </svg>
+    </a>
+
+    <button
+      class="menu-button"
+      type="button"
+      [class.open]="menuOpen()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Menü öffnen"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+@if (menuOpen()) {
+  <div class="mobile-menu">
+    <nav>
+      <a href="#work" (click)="closeMenu()">{{ language.current() === 'de' ? 'Projekte' : 'Projects' }}</a>
+      <a href="#experience" (click)="closeMenu()">{{ language.current() === 'de' ? 'Erfahrung' : 'Experience' }}</a>
+      <a href="#about" (click)="closeMenu()">{{ language.current() === 'de' ? 'Über mich' : 'About' }}</a>
+      <a href="#contact" (click)="closeMenu()">{{ language.current() === 'de' ? 'Kontakt' : 'Contact' }}</a>
+    </nav>
+    <div class="mobile-meta">
+      <span>Zürich, CH</span>
+      <a href="mailto:jakupieris7@gmail.com">jakupieris7@gmail.com</a>
+    </div>
+  </div>
+}
