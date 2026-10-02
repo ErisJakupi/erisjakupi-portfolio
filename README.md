@@ -48,6 +48,8 @@ src/
 
 The project data is stored centrally in `src/app/data/portfolio.data.ts`, while the individual page areas are split into small standalone Angular components.
 
+Only projects with public code are featured in this repository. Employer-owned and private project details are intentionally kept out of the portfolio.
+
 ## Run locally
 
 Requirements:
