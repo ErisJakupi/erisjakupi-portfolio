@@ -83,12 +83,35 @@
   gap: 12px;
 }
 
+.cv-link,
 .language-button,
 .github-link,
 .menu-button {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.025);
   color: var(--text);
+}
+
+.cv-link {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 15px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 650;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.cv-link span {
+  color: var(--accent);
+}
+
+.cv-link:hover {
+  border-color: rgba(105, 230, 158, 0.46);
+  background: rgba(105, 230, 158, 0.08);
 }
 
 .language-button {
@@ -197,5 +220,9 @@
   .brand-name,
   .github-link {
     display: none;
+  }
+
+  .cv-link {
+    padding: 0 12px;
   }
 }

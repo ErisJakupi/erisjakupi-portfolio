@@ -243,6 +243,15 @@
   font-size: 14px;
 }
 
+.cv-button {
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.cv-button:hover {
+  border-color: var(--accent);
+}
+
 .scroll-hint {
   position: absolute;
   right: clamp(22px, 4vw, 72px);

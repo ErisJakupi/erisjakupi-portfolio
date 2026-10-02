@@ -34,16 +34,17 @@
 
 .section-heading h2 {
   margin: 10px 0 0;
-  font-size: clamp(52px, 7vw, 104px);
-  line-height: 0.94;
+  font-size: clamp(44px, 5.4vw, 82px);
+  line-height: 0.95;
   letter-spacing: -0.06em;
-  font-weight: 640;
+  font-weight: 650;
 }
 
 .section-heading h2 em {
-  color: transparent;
+  color: var(--text);
+  font-family: var(--sans);
   font-style: normal;
-  -webkit-text-stroke: 1px rgba(242, 246, 243, 0.48);
+  font-weight: 650;
 }
 
 .experience-grid {

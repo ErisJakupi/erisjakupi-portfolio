@@ -36,7 +36,8 @@ export const PROJECTS: PortfolioProject[] = [
       { label: { de: 'Stack', en: 'Stack' }, value: 'React · Spring Boot · Kafka' },
       { label: { de: 'Delivery', en: 'Delivery' }, value: 'Docker · GitHub Actions' }
     ],
-    link: 'https://github.com/ErisJakupi/CoachingSite',
+    repositoryUrl: 'https://github.com/ErisJakupi/CoachingSite',
+    liveUrl: null,
     visual: 'services'
   },
   {
@@ -74,7 +75,47 @@ export const PROJECTS: PortfolioProject[] = [
       { label: { de: 'Stack', en: 'Stack' }, value: 'Java · JUnit · CI' },
       { label: { de: 'Fokus', en: 'Focus' }, value: 'TDD · Coverage' }
     ],
-    link: 'https://github.com/ErisJakupi/450_Projekt',
+    repositoryUrl: 'https://github.com/ErisJakupi/450_Projekt',
+    liveUrl: null,
     visual: 'chess'
+  },
+  {
+    id: 'portfolio',
+    number: '03',
+    category: { de: 'Frontend & Portfolio', en: 'Frontend & Portfolio' },
+    year: '2026',
+    title: 'erisjakupi.ch',
+    summary: {
+      de: 'Mein persönliches Portfolio als Angular-Anwendung mit TypeScript, responsivem Dark Theme, interaktiven Animationen und Vercel-Deployment.',
+      en: 'My personal portfolio built as an Angular application with TypeScript, a responsive dark theme, interactive motion and Vercel deployment.'
+    },
+    intro: {
+      de: 'Eine bewusst reduzierte Portfolio-Seite, die meine Projekte, Erfahrung und technischen Schwerpunkte schnell erfassbar macht und gleichzeitig meine Frontend-Arbeit zeigt.',
+      en: 'A deliberately focused portfolio that makes my projects, experience and technical focus easy to scan while also demonstrating my frontend work.'
+    },
+    problem: {
+      de: 'Die Seite sollte bei Recruitern schnell einen klaren Eindruck vermitteln, ohne wie ein Standard-Template zu wirken. Gleichzeitig musste sie auf Desktop und Mobile performant, zugänglich und leicht weiterzuentwickeln bleiben.',
+      en: 'The site needed to communicate a clear profile quickly without looking like a generic template, while remaining performant, accessible and easy to maintain on desktop and mobile.'
+    },
+    solution: [
+      { de: 'Portfolio in eigenständige Angular-Komponenten aufgeteilt', en: 'Split the portfolio into focused Angular components' },
+      { de: 'Projektinhalte zentral über TypeScript-Modelle und Daten strukturiert', en: 'Structured project content through TypeScript models and central data' },
+      { de: 'Interaktive, aber dezente Motion- und Pointer-Effekte umgesetzt', en: 'Built interactive but restrained motion and pointer effects' },
+      { de: 'Responsive Projekt-Galerie mit horizontalem Scroll-Snap entwickelt', en: 'Created a responsive project gallery with horizontal scroll snapping' },
+      { de: 'Deployment und Custom Domain über Vercel eingerichtet', en: 'Configured deployment and the custom domain through Vercel' }
+    ],
+    note: {
+      de: 'Diese Website und ihre komplette Angular-Struktur sind öffentlich auf GitHub einsehbar.',
+      en: 'This website and its complete Angular source are public on GitHub.'
+    },
+    tags: ['Angular', 'TypeScript', 'CSS', 'Responsive UI', 'Vercel'],
+    facts: [
+      { label: { de: 'Rolle', en: 'Role' }, value: 'Design & Development' },
+      { label: { de: 'Stack', en: 'Stack' }, value: 'Angular · TypeScript · CSS' },
+      { label: { de: 'Live', en: 'Live' }, value: 'erisjakupi.ch' }
+    ],
+    repositoryUrl: 'https://github.com/ErisJakupi/erisjakupi-portfolio',
+    liveUrl: 'https://erisjakupi.ch',
+    visual: 'portfolio'
   }
 ];

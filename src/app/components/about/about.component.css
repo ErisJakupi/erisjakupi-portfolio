@@ -27,16 +27,17 @@
 
 .about-title h2 {
   margin: 16px 0 0;
-  font-size: clamp(50px, 6.3vw, 94px);
-  line-height: 0.96;
+  font-size: clamp(44px, 5.4vw, 82px);
+  line-height: 0.95;
   letter-spacing: -0.06em;
-  font-weight: 630;
+  font-weight: 650;
 }
 
 .about-title h2 em {
-  color: transparent;
+  color: var(--text);
+  font-family: var(--sans);
   font-style: normal;
-  -webkit-text-stroke: 1px rgba(242, 246, 243, 0.48);
+  font-weight: 650;
 }
 
 .about-copy {

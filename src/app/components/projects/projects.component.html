@@ -14,102 +14,124 @@
     <div class="heading-side">
       <p>
         {{ language.current() === 'de'
-          ? 'Vier Projekte aus unterschiedlichen Bereichen — von verteilten Systemen über Testing bis zu produktionsnahen Business Applications.'
-          : 'Four projects across different areas — from distributed systems and testing to production-oriented business applications.' }}
+          ? 'Drei öffentliche Projekte mit unterschiedlichem Fokus — verteilte Systeme, Testing und diese Angular-Portfolio-Seite.'
+          : 'Three public projects with different focuses — distributed systems, testing and this Angular portfolio.' }}
       </p>
-      <div class="rail-controls">
-        <button type="button" aria-label="Vorheriges Projekt" (click)="scrollProjects('previous')">←</button>
-        <button type="button" aria-label="Nächstes Projekt" (click)="scrollProjects('next')">→</button>
-      </div>
     </div>
   </div>
 
-  <div class="rail-wrap">
-    <div class="project-rail" #projectRail>
-      @for (project of projects; track project.id) {
-        <article
-          class="project-card"
-          tabindex="0"
-          (pointermove)="updateCardGlow($event)"
-          (click)="openProject(project)"
-          (keydown.enter)="openProject(project)"
-        >
-          <div class="project-glow"></div>
+  <div class="section-shell projects-stack">
+    @for (project of projects; track project.id) {
+      <article
+        class="project-card"
+        tabindex="0"
+        (pointermove)="updateCardGlow($event)"
+        (click)="openProject(project)"
+        (keydown.enter)="openProject(project)"
+      >
+        <div class="project-glow"></div>
 
-          <div class="project-copy">
-            <div class="project-meta">
-              <span>{{ project.number }} / {{ language.pick(project.category) }}</span>
-              <span>{{ project.year }}</span>
+        <div class="project-copy">
+          <div class="project-meta">
+            <span>{{ project.number }} / {{ language.pick(project.category) }}</span>
+            <span>{{ project.year }}</span>
+          </div>
+
+          <div class="project-title-group">
+            <h3>{{ project.title }}</h3>
+            <p>{{ language.pick(project.summary) }}</p>
+          </div>
+
+          <div class="project-footer">
+            <div class="tags">
+              @for (tag of project.tags; track tag) {
+                <span>{{ tag }}</span>
+              }
             </div>
 
-            <div class="project-title-group">
-              <h3>{{ project.title }}</h3>
-              <p>{{ language.pick(project.summary) }}</p>
-            </div>
-
-            <div class="project-footer">
-              <div class="tags">
-                @for (tag of project.tags; track tag) {
-                  <span>{{ tag }}</span>
-                }
-              </div>
-
+            <div class="project-actions">
               <button type="button" class="case-button" (click)="$event.stopPropagation(); openProject(project)">
                 {{ language.current() === 'de' ? 'Case Study' : 'Case study' }}
                 <span>↗</span>
               </button>
+
+              @if (project.repositoryUrl !== null) {
+                <a class="project-link" [href]="project.repositoryUrl" target="_blank" rel="noreferrer" (click)="$event.stopPropagation()">
+                  GitHub <span>↗</span>
+                </a>
+              }
+
+              @if (project.liveUrl !== null) {
+                <a class="project-link" [href]="project.liveUrl" target="_blank" rel="noreferrer" (click)="$event.stopPropagation()">
+                  {{ language.current() === 'de' ? 'Live ansehen' : 'View live' }} <span>↗</span>
+                </a>
+              }
             </div>
           </div>
+        </div>
 
-          <div class="project-visual">
-            @switch (project.visual) {
-              @case ('services') {
-                <div class="services-visual">
-                  <div class="visual-toolbar"><span>SERVICE TOPOLOGY</span><span>6 NODES</span></div>
-                  <div class="service-map">
-                    <span class="connector c1"></span>
-                    <span class="connector c2"></span>
-                    <span class="connector c3"></span>
-                    <span class="connector c4"></span>
-                    <div class="service-node gateway">API<br>GATEWAY</div>
-                    <div class="service-node product">PRODUCT</div>
-                    <div class="service-node cart">CART</div>
-                    <div class="service-node user">USER</div>
-                    <div class="service-node fitness">FITNESS</div>
-                    <div class="service-node kafka">KAFKA</div>
-                  </div>
-                  <div class="visual-status"><span><i></i> discovery</span><span><i></i> events</span><span><i></i> resilient</span></div>
+        <div class="project-visual">
+          @switch (project.visual) {
+            @case ('services') {
+              <div class="services-visual">
+                <div class="visual-toolbar"><span>SERVICE TOPOLOGY</span><span>6 NODES</span></div>
+                <div class="service-map">
+                  <span class="connector c1"></span>
+                  <span class="connector c2"></span>
+                  <span class="connector c3"></span>
+                  <span class="connector c4"></span>
+                  <div class="service-node gateway">API<br>GATEWAY</div>
+                  <div class="service-node product">PRODUCT</div>
+                  <div class="service-node cart">CART</div>
+                  <div class="service-node user">USER</div>
+                  <div class="service-node fitness">FITNESS</div>
+                  <div class="service-node kafka">KAFKA</div>
                 </div>
-              }
-              @case ('chess') {
-                <div class="chess-visual">
-                  <div class="visual-toolbar"><span>TDD SESSION</span><span>10 × 10</span></div>
-                  <div class="chess-board">
+                <div class="visual-status"><span><i></i> discovery</span><span><i></i> events</span><span><i></i> resilient</span></div>
+              </div>
+            }
+            @case ('chess') {
+              <div class="chess-visual">
+                <div class="visual-toolbar"><span>TDD SESSION</span><span>10 × 10</span></div>
+                <div class="chess-stage">
+                  <div class="chess-board" aria-hidden="true">
                     @for (square of chessSquares; track square) {
-                      <span
-                        [class.dark]="isDarkSquare(square)"
-                        [class.piece]="isChessPiece(square)"
-                        [class.alternate]="isAlternatePiece(square)"
-                      ></span>
+                      <span [class.dark]="isDarkSquare(square)" [class.focus-square]="square === 55">
+                        @if (chessPiece(square); as piece) {
+                          <b [class.white-piece]="isWhitePiece(square)">{{ piece }}</b>
+                        }
+                      </span>
                     }
                   </div>
-                  <div class="test-status"><span><i></i> UNIT</span><span><i></i> INTEGRATION</span><span><i></i> COVERAGE</span><strong>PASS</strong></div>
                 </div>
-              }
+                <div class="test-status"><span><i></i> UNIT</span><span><i></i> INTEGRATION</span><span><i></i> COVERAGE</span><strong>PASS</strong></div>
+              </div>
             }
-          </div>
-        </article>
-      }
-
-      <div class="rail-end" aria-hidden="true">
-        <span>02 / 02</span>
-        <p>{{ language.current() === 'de' ? 'Mehr entsteht gerade.' : 'More is being built.' }}</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-shell swipe-hint">
-    <span>{{ language.current() === 'de' ? 'Horizontal scrollen' : 'Scroll horizontally' }}</span>
-    <i></i>
+            @case ('portfolio') {
+              <div class="portfolio-visual">
+                <div class="browser-bar">
+                  <span class="browser-dots"><i></i><i></i><i></i></span>
+                  <span class="browser-url">erisjakupi.ch</span>
+                  <span class="browser-live"><i></i> LIVE</span>
+                </div>
+                <div class="portfolio-preview">
+                  <div class="preview-nav"><strong>EJ</strong><span>PROJECTS&nbsp;&nbsp;ABOUT&nbsp;&nbsp;CONTACT</span></div>
+                  <div class="preview-name">
+                    <strong>ERIS</strong>
+                    <strong class="preview-outline">JAKUPI</strong>
+                  </div>
+                  <div class="preview-meta">
+                    <span>SOFTWARE DEVELOPER EFZ</span>
+                    <span>ANGULAR · TYPESCRIPT · .NET</span>
+                  </div>
+                  <div class="preview-glow"></div>
+                </div>
+                <div class="portfolio-status"><span><i></i> ANGULAR</span><span><i></i> RESPONSIVE</span><span><i></i> VERCEL</span></div>
+              </div>
+            }
+          }
+        </div>
+      </article>
+    }
   </div>
 </section>

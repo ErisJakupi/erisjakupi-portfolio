@@ -12,6 +12,10 @@
   </nav>
 
   <div class="header-actions">
+    <a class="cv-link" href="/Eris_Jakupi_CV.pdf" download="Eris_Jakupi_CV.pdf">
+      {{ language.current() === 'de' ? 'Lebenslauf herunterladen' : 'Download résumé' }} <span>↓</span>
+    </a>
+
     <button class="language-button" type="button" (click)="language.toggle()">
       {{ language.current() === 'de' ? 'EN' : 'DE' }}
     </button>
@@ -43,6 +47,7 @@
       <a href="#experience" (click)="closeMenu()">{{ language.current() === 'de' ? 'Erfahrung' : 'Experience' }}</a>
       <a href="#about" (click)="closeMenu()">{{ language.current() === 'de' ? 'Über mich' : 'About' }}</a>
       <a href="#contact" (click)="closeMenu()">{{ language.current() === 'de' ? 'Kontakt' : 'Contact' }}</a>
+      <a href="/Eris_Jakupi_CV.pdf" download="Eris_Jakupi_CV.pdf" (click)="closeMenu()">{{ language.current() === 'de' ? 'Lebenslauf herunterladen' : 'Download résumé' }} ↓</a>
     </nav>
     <div class="mobile-meta">
       <span>Zürich, CH</span>

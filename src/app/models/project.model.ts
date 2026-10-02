@@ -11,7 +11,7 @@ export interface ProjectFact {
 }
 
 export interface PortfolioProject {
-  id: 'coaching' | 'chess';
+  id: 'coaching' | 'chess' | 'portfolio';
   number: string;
   category: LocalizedText;
   year: string;
@@ -23,6 +23,7 @@ export interface PortfolioProject {
   note: LocalizedText;
   tags: string[];
   facts: ProjectFact[];
-  link: string | null;
-  visual: 'services' | 'chess';
+  repositoryUrl: string | null;
+  liveUrl: string | null;
+  visual: 'services' | 'chess' | 'portfolio';
 }

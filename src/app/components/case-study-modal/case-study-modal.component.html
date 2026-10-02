@@ -44,11 +44,18 @@
           <div>
             <h3>{{ language.current() === 'de' ? 'Hinweis' : 'Note' }}</h3>
             <p>{{ language.pick(project.note) }}</p>
-            @if (project.link !== null) {
-              <a [href]="project.link" target="_blank" rel="noreferrer">
-                {{ language.current() === 'de' ? 'Repository ansehen' : 'View repository' }} <span>↗</span>
-              </a>
-            }
+            <div class="case-links">
+              @if (project.repositoryUrl !== null) {
+                <a [href]="project.repositoryUrl" target="_blank" rel="noreferrer">
+                  {{ language.current() === 'de' ? 'Repository ansehen' : 'View repository' }} <span>↗</span>
+                </a>
+              }
+              @if (project.liveUrl !== null) {
+                <a [href]="project.liveUrl" target="_blank" rel="noreferrer">
+                  {{ language.current() === 'de' ? 'Live Website öffnen' : 'Open live website' }} <span>↗</span>
+                </a>
+              }
+            </div>
           </div>
         </section>
       </div>

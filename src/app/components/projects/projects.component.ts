@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PROJECTS } from '../../data/portfolio.data';
 import { PortfolioProject } from '../../models/project.model';
 import { LanguageService } from '../../services/language.service';
@@ -11,26 +11,48 @@ import { LanguageService } from '../../services/language.service';
 })
 export class ProjectsComponent {
   @Output() projectSelected = new EventEmitter<PortfolioProject>();
-  @ViewChild('projectRail') projectRail?: ElementRef<HTMLDivElement>;
 
   readonly projects = PROJECTS;
   readonly chessSquares = Array.from({ length: 100 }, (_, index) => index);
+  readonly chessPieces: Record<number, string> = {
+    12: '♜',
+    13: '♞',
+    14: '♝',
+    15: '♛',
+    16: '♚',
+    17: '♝',
+    18: '♞',
+    19: '♜',
+    22: '♟',
+    23: '♟',
+    24: '♟',
+    25: '♟',
+    26: '♟',
+    27: '♟',
+    28: '♟',
+    29: '♟',
+    72: '♙',
+    73: '♙',
+    74: '♙',
+    75: '♙',
+    76: '♙',
+    77: '♙',
+    78: '♙',
+    79: '♙',
+    82: '♖',
+    83: '♘',
+    84: '♗',
+    85: '♕',
+    86: '♔',
+    87: '♗',
+    88: '♘',
+    89: '♖'
+  };
 
   constructor(public readonly language: LanguageService) {}
 
   openProject(project: PortfolioProject): void {
     this.projectSelected.emit(project);
-  }
-
-  scrollProjects(direction: 'previous' | 'next'): void {
-    const rail = this.projectRail?.nativeElement;
-    if (rail === undefined) {
-      return;
-    }
-
-    const distance = rail.clientWidth * 0.82;
-    const left = direction === 'next' ? distance : -distance;
-    rail.scrollBy({ left, behavior: 'smooth' });
   }
 
   updateCardGlow(event: PointerEvent): void {
@@ -48,11 +70,16 @@ export class ProjectsComponent {
     return (row + column) % 2 === 1;
   }
 
-  isChessPiece(index: number): boolean {
-    return [22, 25, 27, 71, 74, 78].includes(index);
+  chessPiece(index: number): string | null {
+    const piece = this.chessPieces[index];
+    if (piece === undefined) {
+      return null;
+    }
+
+    return piece;
   }
 
-  isAlternatePiece(index: number): boolean {
+  isWhitePiece(index: number): boolean {
     return index >= 70;
   }
 }

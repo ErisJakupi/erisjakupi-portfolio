@@ -2,11 +2,11 @@
 
 My personal developer portfolio, built with Angular and TypeScript.
 
-The website presents my background as a Software Developer EFZ, selected projects, professional experience and the technologies I work with. I wanted the portfolio itself to feel like a small frontend project rather than a static CV, so the interface uses interactive motion, horizontal project browsing and responsive layouts.
+The website presents my background as a Software Developer EFZ, selected public projects, professional experience and the technologies I work with. I wanted the portfolio itself to feel like a real frontend project rather than a static CV, so the interface uses interactive motion, horizontal project browsing, responsive layouts and reusable Angular components.
 
 ## Live website
 
-**erisjakupi.com**
+**https://erisjakupi.ch**
 
 ## Tech stack
 
@@ -16,11 +16,15 @@ The website presents my background as a Software Developer EFZ, selected project
 - CSS
 - Angular Signals
 - Standalone Components
+- Vercel
 
-## Main projects shown
+## Featured projects
 
 - **CoachingSite** — Microservices application with React, Spring Boot, Kafka, Docker and GitHub Actions
 - **Chess — TDD** — 10×10 chess variant developed with test-driven development and automated testing
+- **erisjakupi.ch** — This portfolio itself, built with Angular, TypeScript, responsive CSS and interactive UI effects
+
+Each project card links to its public repository. The portfolio project additionally links directly to the live website.
 
 ## Project structure
 
@@ -46,9 +50,13 @@ src/
 └── styles.css
 ```
 
-The project data is stored centrally in `src/app/data/portfolio.data.ts`, while the individual page areas are split into small standalone Angular components.
+Project content is stored centrally in `src/app/data/portfolio.data.ts`, while the page is split into focused standalone Angular components.
 
 Only projects with public code are featured in this repository. Employer-owned and private project details are intentionally kept out of the portfolio.
+
+## CV
+
+A public-safe PDF version of my CV is available at `public/Eris_Jakupi_CV.pdf` and can be downloaded directly from the website.
 
 ## Run locally
 
@@ -79,6 +87,10 @@ npm run build
 
 The browser build is created in `dist/eris-portfolio/browser`.
 
+## Deployment
+
+The repository includes `vercel.json`, so it can be connected directly to Vercel. The build command is `npm run build` and the output directory is `dist/eris-portfolio/browser`.
+
 ## Author
 
 **Eris Jakupi**  
@@ -86,8 +98,4 @@ Software Developer EFZ · Zürich, Switzerland
 
 - GitHub: [ErisJakupi](https://github.com/ErisJakupi)
 - LinkedIn: [Eris Jakupi](https://www.linkedin.com/in/eris-jakupi)
-
-
-## Deployment
-
-The repository includes a small `vercel.json`, so the project can be connected directly to Vercel. The build command is `npm run build` and the output directory is `dist/eris-portfolio/browser`.
+- Website: [erisjakupi.ch](https://erisjakupi.ch)
